@@ -489,9 +489,8 @@ function comment_alter_get_changed_fields($comment, $langcode) {
           foreach ($rows as $row) {
             $changed_fields[$field_name][] = array(
               'name' => $line ? '' : $diff['#name'],
-              'old' => array(empty($row[1]['data']) ? '' : $row[1]['data']),
-              'new' => array(empty($row[3]['data']) ? '' : $row[3]['data']),
-            );
+              'old' => array(html_entity_decode($row[1]['data'] ?? '')),
+              'new' => array(html_entity_decode($row[3]['data'] ?? '')),            );
             $line++;
           }
         }
